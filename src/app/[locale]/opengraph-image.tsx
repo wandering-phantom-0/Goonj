@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
@@ -10,9 +8,17 @@ export const contentType = "image/png";
 // which means fetching a font file at generation time. Kept out for now to
 // avoid depending on an external font URL that can't be verified in this
 // environment (see README "Follow-ups" for how to add a localized version).
-export default function OpengraphImage() {
-  const imageData = readFileSync(join(process.cwd(), "public/images/hero-dark.jpg"));
-  const imageSrc = `data:image/jpeg;base64,${imageData.toString("base64")}`;
+//
+// The hero image is fetched over HTTP from the site's own public URL rather
+// than read off disk with fs - reading local files by a dynamically-built
+// path isn't reliably picked up by Vercel's serverless function file tracer,
+// which silently breaks this in production while still working in local
+// `next build && next start` (the file is just present on disk there).
+export default async function OpengraphImage() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const imageRes = await fetch(`${siteUrl}/images/hero-dark.jpg`);
+  const imageBuffer = await imageRes.arrayBuffer();
+  const imageSrc = `data:image/jpeg;base64,${Buffer.from(imageBuffer).toString("base64")}`;
 
   return new ImageResponse(
     (

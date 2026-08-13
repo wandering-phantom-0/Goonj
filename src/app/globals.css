@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Enables the `dark:` utility variant, keyed off next-themes' `.dark` class
+   on <html>. Used sparingly (e.g. swapping which hero image renders) -
+   color theming itself still runs through the CSS-variable indirection
+   below, not this variant. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Runtime palette - swapped by next-themes toggling a `dark` class on <html>.
    Light is the default (:root); .dark overrides. Token names (ink/paper/tape)
    are brand-slot names, not literal light/dark descriptions. */

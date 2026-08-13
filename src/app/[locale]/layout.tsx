@@ -90,7 +90,7 @@ export default async function LocaleLayout({
       <body className="min-h-screen bg-ink font-body text-paper antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >

@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* Runtime palette - swapped by next-themes toggling a `dark` class on <html>.
+   Light is the default (:root); .dark overrides. Token names (ink/paper/tape)
+   are brand-slot names, not literal light/dark descriptions. */
+:root {
+  --ink: #faf6ee;
+  --ink-2: #ffffff;
+  --ink-3: #f0e6d2;
+  --line: #ddccac;
+  --paper: #241811;
+  --paper-dim: #6b5a47;
+  --paper-faint: #8a7761;
+  --tape: #a85a15;
+  --tape-dim: #7a4110;
+  --tape-soft: rgba(168, 90, 21, 0.08);
+  color-scheme: light;
+}
+
+.dark {
+  --ink: #180f0c;
+  --ink-2: #241811;
+  --ink-3: #2f2018;
+  --line: #40291d;
+  --paper: #f5e9d6;
+  --paper-dim: #c1a98b;
+  --paper-faint: #8a7461;
+  --tape: #e2983c;
+  --tape-dim: #a96f26;
+  --tape-soft: rgba(226, 152, 60, 0.14);
+  color-scheme: dark;
+}
+
+@theme {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-paper-faint: var(--paper-faint);
+  --color-tape: var(--tape);
+  --color-tape-dim: var(--tape-dim);
+  --color-tape-soft: var(--tape-soft);
+
+  --font-display: var(--font-yatra), "Noto Sans Devanagari", serif;
+  --font-body: var(--font-hind), "Noto Sans Devanagari", sans-serif;
+
+  --shadow-glow: 0 0 60px -12px var(--tape-soft);
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::selection {
+  background: var(--color-tape);
+  color: var(--color-ink);
+}
+
+/* subtle film-grain texture, distinct from the source's flat surface */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.dark .grain-overlay {
+  opacity: 0.05;
+}
+
+.tape-card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-line);
+  background: linear-gradient(160deg, var(--color-ink-2), var(--color-ink-3));
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease,
+    background 0.2s ease;
+}
+
+.tape-card:hover {
+  border-color: var(--color-tape-dim);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+.tape-reel {
+  border-radius: 9999px;
+  border: 2px solid var(--color-paper-faint);
+  position: relative;
+}
+
+.tape-reel::after {
+  content: "";
+  position: absolute;
+  inset: 35%;
+  border-radius: 9999px;
+  background: var(--color-paper-faint);
+}
+
+.tape-card:hover .tape-reel {
+  animation: spin 2.4s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.no-signal-stripes {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-ink-3) 0px,
+    var(--color-ink-3) 10px,
+    var(--color-ink-2) 10px,
+    var(--color-ink-2) 20px
+  );
+}
+
+.chip {
+  border: 1px solid var(--color-line);
+  color: var(--color-paper-dim);
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--color-tape-dim);
+  color: var(--color-paper);
+}
+
+.chip[data-active="true"] {
+  border-color: var(--color-tape);
+  color: var(--color-ink);
+  background-color: var(--color-tape);
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

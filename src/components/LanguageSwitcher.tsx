@@ -1,0 +1,27 @@
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
+import { Languages } from "lucide-react";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+
+export default function LanguageSwitcher() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const otherLocale = routing.locales.find((l) => l !== locale) ?? routing.defaultLocale;
+
+  return (
+    <button
+      type="button"
+      onClick={() => router.replace(pathname, { locale: otherLocale })}
+      className="chip flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
+      aria-label={t("switchLanguage")}
+    >
+      <Languages size={14} aria-hidden="true" />
+      <span>{otherLocale.toUpperCase()}</span>
+    </button>
+  );
+}

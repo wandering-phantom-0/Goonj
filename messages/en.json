@@ -1,0 +1,79 @@
+{
+  "site": {
+    "name": "Goonj - Old Playlists",
+    "shortName": "Goonj",
+    "tagline": "Every playlist of old memories, in one place.",
+    "description": "Goonj is a curated directory of nostalgic Indian playlist sites - barbershop, road-trip, festival, and wedding music scattered across the internet."
+  },
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "submit": "Add a site",
+    "about": "Story",
+    "switchLanguage": "हिन्दी में देखें",
+    "languageLabel": "Language",
+    "switchTheme": "Toggle theme"
+  },
+  "home": {
+    "eyebrow": "A directory",
+    "originLabel": "Where it all started",
+    "gridTitle": "All the playlist sites",
+    "gridSubtitle": "Pick a category or scroll on",
+    "countLabel": "{count} / {total} sites",
+    "allCategory": "All",
+    "submitCta": "Submit yours",
+    "submitCtaSub": "अपनी साइट जोड़ें",
+    "viewAll": "View all categories"
+  },
+  "card": {
+    "visit": "Open {name}",
+    "offline": "Site currently offline",
+    "offlineShort": "Offline",
+    "submittedBy": "Submitted by",
+    "visitLink": "Visit site"
+  },
+  "category": {
+    "backToAll": "All sites",
+    "heading": "{category}",
+    "description": "All the nostalgic playlist sites in the {category} category - {count} sites",
+    "empty": "No sites in this category yet."
+  },
+  "playlist": {
+    "visitSite": "Visit site",
+    "categoryLabel": "Category",
+    "submittedByLabel": "Submitted by",
+    "statusLabel": "Status",
+    "statusLive": "Live",
+    "statusOffline": "Offline",
+    "similarTitle": "More in this category",
+    "backLink": "Back to the directory"
+  },
+  "footer": {
+    "storyTitle": "One idea, many stories",
+    "storyBody": "The original idea was posted by @ybhrdwj as saloon.wtf. The internet took it and made it its own. Every site here belongs to its creator, credited on its card.",
+    "curated": "curated with love, late at night",
+    "sourceNote": "This is an independent, open-source directory project - credit for the linked sites belongs to their creators."
+  },
+  "submitPage": {
+    "eyebrow": "Contribute",
+    "title": "Submit your site",
+    "body": "If you've built a nostalgic playlist site - barbershop, road-trip, wedding, festival, or everyday - let us know. Open a pull request with a new entry, or message us on X.",
+    "steps": [
+      "Fill in your entry's details in data/entries.json",
+      "Open a pull request",
+      "We'll review and add it"
+    ],
+    "cta": "View the repository on GitHub"
+  },
+  "aboutPage": {
+    "eyebrow": "Story",
+    "title": "One idea, many stories",
+    "body1": "In the early 2020s, @ybhrdwj built saloon.wtf - a playlist site for the 90s Bollywood songs that play at Indian barbershops. The idea went viral, and people started building dozens of their own - for road trips, weddings, festivals, everyday routines.",
+    "body2": "Goonj is an attempt to bring all of those sites together in one place - a directory, so none of them get lost."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This site may have been removed from the directory, or the link is wrong.",
+    "cta": "Back to home"
+  }
+}

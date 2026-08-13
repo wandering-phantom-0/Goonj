@@ -47,6 +47,9 @@ export async function generateMetadata({
     alternates: {
       languages: { hi: "/hi", en: "/en" },
     },
+    verification: {
+      google: "Ab8kt-9IGTQQ3sggjFVs6_0mCezHV0KwrpSRO5Go_cA",
+    },
     openGraph: {
       siteName: t("name"),
       title: t("name"),

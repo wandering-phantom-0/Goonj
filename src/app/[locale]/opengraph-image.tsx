@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { HERO_DARK_BASE64 } from "./opengraph-image-data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -9,17 +10,15 @@ export const contentType = "image/png";
 // avoid depending on an external font URL that can't be verified in this
 // environment (see README "Follow-ups" for how to add a localized version).
 //
-// The hero image is fetched over HTTP from the site's own public URL rather
-// than read off disk with fs - reading local files by a dynamically-built
-// path isn't reliably picked up by Vercel's serverless function file tracer,
-// which silently breaks this in production while still working in local
-// `next build && next start` (the file is just present on disk there).
-export default async function OpengraphImage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const imageRes = await fetch(`${siteUrl}/images/hero-dark.jpg`);
-  const imageBuffer = await imageRes.arrayBuffer();
-  const imageSrc = `data:image/jpeg;base64,${Buffer.from(imageBuffer).toString("base64")}`;
+// The hero image is embedded as a base64 constant (opengraph-image-data.ts)
+// rather than read via fs or fetched over HTTP at request time. Both of
+// those add latency/failure points inside a function WhatsApp's crawler
+// waits on with a tight timeout - fs.readFileSync with a dynamic path also
+// isn't reliably bundled by Vercel's serverless file tracer. A build-time
+// constant has zero I/O at request time.
+const imageSrc = `data:image/jpeg;base64,${HERO_DARK_BASE64}`;
 
+export default function OpengraphImage() {
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", position: "relative" }}>

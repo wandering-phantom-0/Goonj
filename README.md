@@ -10,6 +10,8 @@
 ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 
+![Goonj homepage screenshot](./.github/screenshot.jpg)
+
 </div>
 
 ---

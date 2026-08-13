@@ -1,90 +1,126 @@
-# Goonj (गूँज) - Old Playlists Directory
+<div align="center">
 
-Goonj is one place for nostalgic Indian playlist sites - an SEO-first collection built with Next.js App Router, inspired by the "OG Playlist" directory concept (`saloon.wtf` and the sites it spawned).
+# Goonj (गूँज)
 
-## What this is
+**One place for every nostalgic Indian playlist site.**
 
-A statically-generated directory of ~69 nostalgic playlist microsites, with:
-- A dedicated, indexable page per directory entry (`/[locale]/playlist/[slug]`) and per category (`/[locale]/category/[slug]`) - the source site is a single-page SPA with none of this
-- Full Hindi ⇄ English routing (`/hi/...`, `/en/...`) with `hreflang` alternates, via `next-intl`
-- `sitemap.xml` / `robots.ts`, JSON-LD structured data (`CollectionPage`, `ItemList`, `BreadcrumbList`, `CreativeWork`) on every page
-- A different visual identity from the source's "retro TV" cards - a cassette-tape motif, warm sepia palette, Devanagari-capable type (`Yatra One` + `Hind`)
-- Zero database - content lives in `data/entries.json`, edited via PR
+[Live Demo](https://goonj0.vercel.app) · [Add Your Site](#add-your-playlist-site) · [Getting Started](#getting-started)
 
-## Data provenance
+![License](https://img.shields.io/github/license/wandering-phantom-0/Goonj?color=blue)
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 
-`data/entries.json` was extracted from the live source site's own JS bundle (which embeds the entry list as plain data - `id`, `title`, `desc`, `owner`, `url`, `category`, plus `dead`/`pinned` flags), not guessed or hand-transcribed. 68 grid entries + 1 hardcoded "origin" entry (`saloon.wtf`, the site that started the trend) = 69 total, across 9 categories. Verified: all slugs unique, category set matches the 9 filter chips.
+</div>
 
-### Image provenance
+---
 
-Thumbnail screenshots (`public/images/entries/{slug}.jpg`, 69 files) were downloaded once from the source site's own `/thumbs/site-{id}.jpg` and are now self-hosted and served via `next/image` (responsive `srcSet`, lazy-loaded, explicit `alt` text). Offline entries (`status: "offline"`) intentionally skip the image and show the "no signal" placeholder instead.
+## 📻 The trend
 
-**These screenshots were not taken by this project** - they're previews of the linked third-party sites, used here for identification purposes in a directory listing (the same purpose they served on the source). They are not covered by this repo's MIT license (see `LICENSE`). If you're a site owner and want your screenshot removed or updated, or you're forking this and want to avoid the provenance question entirely, swap the file in `public/images/entries/` (same filename = same slug, `null` the `image` field in `data/entries.json` to fall back to the placeholder card) - no code changes needed either way.
+A while back, [@ybhrdwj](https://x.com/ybhrdwj) built [saloon.wtf](https://saloon.wtf) - a single-page playlist of the 90s Bollywood songs that play at Indian barbershops, styled like an old radio. It went viral for exactly the right reason: everyone has a version of that memory. So the internet started building its own - a Haryana Roadways bus playlist, a Punjabi wedding baraat playlist, a Chhath Puja playlist, a "grandparents' living room" playlist. Dozens of tiny, single-purpose sites, each built around one specific, nostalgic musical moment.
 
-## Requirements
+**Goonj - गूँज, "echo" - is where all of them live together.**
 
-- **Node.js 20+** and npm. **This machine did not have Node.js installed when this project was scaffolded** - install it before running anything below (https://nodejs.org, or `nvm-windows`). Local dev/build/lint all require it; without it you can still push straight to GitHub and let Vercel build it in the cloud.
+It doesn't host any music. It's a directory: every card here links out to the original site, credited to whoever built it. Think of it as the index that the trend never had.
 
-## Local development
+## ✨ Features
+
+- **69 curated sites** across 9 categories - road trips, weddings, festivals, school days, late-night drives, and more
+- **A real page for every entry and every category** - not one big client-rendered blob. Full `sitemap.xml`, `hreflang`, JSON-LD structured data
+- **Hindi ⇄ English**, fully routed (`/hi/...`, `/en/...`) and localized - not just a translated label bolted onto one page
+- **Light and dark themes**, remembered across visits
+- **A cassette-tape visual identity** - original design, no code or assets shared with the sites it indexes
+- **Add your own site in one PR** - see below
+
+## 🎵 Add your playlist site
+
+Built something in this spirit - a barbershop station, a bus-stand mixtape, a festival playlist? Add it.
+
+1. Fork this repo
+2. Add an entry to [`data/entries.json`](./data/entries.json):
+
+   ```json
+   {
+     "id": 70,
+     "slug": "your-site-slug",
+     "title": "Your Site Name",
+     "title_en": null,
+     "desc": "One line, in your own voice",
+     "owner": "@yourhandle",
+     "url": "https://your-site.com",
+     "domain": "your-site.com",
+     "category": "safar",
+     "status": "live",
+     "featured": false,
+     "pinned": false,
+     "views": null,
+     "image": "/images/entries/your-site-slug.jpg"
+   }
+   ```
+
+3. Drop a screenshot at `public/images/entries/your-site-slug.jpg` (or leave `image` as `null` to use the placeholder card)
+4. Open a PR - no code changes needed, `category` just has to match one of the slugs already in the `categories` array in that same file
+
+The same steps are also written out on the live [`/submit`](https://goonj0.vercel.app/submit) page.
+
+## 🚀 Getting started
+
+*Requires Node.js 20+*
 
 ```bash
-cd goonj
+git clone https://github.com/wandering-phantom-0/Goonj.git
+cd Goonj
 npm install
-cp .env.example .env.local   # set NEXT_PUBLIC_SITE_URL for local runs (optional, defaults to localhost:3000)
+cp .env.example .env.local
 npm run dev
 ```
 
-Visit `http://localhost:3000` - middleware redirects to `/hi` (default locale). Toggle language via the switcher in the header.
-
-Before deploying, always run a full production build locally at least once if you have Node available - this repo has **not** been built or run yet in this environment, so treat the first `npm run build` as the real correctness check:
+Open [localhost:3000](http://localhost:3000) - you'll land on `/hi`, the default locale. Switch language and theme from the header.
 
 ```bash
-npm run build
+npm run build   # production build
 ```
 
-## Deploying to Vercel (free/Hobby tier)
+## 📁 Project structure
 
-1. Push this repo to GitHub.
-2. In Vercel, "Import Project" → select the repo → framework auto-detects as Next.js → deploy.
-3. Set the environment variable `NEXT_PUBLIC_SITE_URL` to your production URL (e.g. `https://goonj.vercel.app`) in Vercel's project settings - it's used to build absolute canonical/OG/sitemap URLs.
-4. No serverless functions beyond what Next.js itself needs (everything is `generateStaticParams`-driven SSG) and no database, so this stays comfortably inside Hobby-tier limits.
-5. Vercel's Image Optimization has a monthly transform quota on Hobby. This project now uses `next/image` on the 69 self-hosted screenshots in `public/images/entries/` - each unique image × size is optimized once and cached, so this is low-volume and should stay well inside Hobby limits, but worth knowing about if you add many more entries.
-
-## Editing content
-
-Add or edit entries in `data/entries.json` under `entries: []`. Each entry:
-
-```json
-{
-  "id": 69,
-  "slug": "unique-url-slug",
-  "title": "Display name (as the creator wrote it - Hindi or English)",
-  "title_en": null,
-  "desc": "One-line description",
-  "owner": "@handle",
-  "url": "https://example.com",
-  "domain": "example.com",
-  "category": "safar",
-  "status": "live",
-  "featured": false,
-  "pinned": false,
-  "views": null,
-  "image": "/images/entries/unique-url-slug.jpg"
-}
+```
+goonj/
+├─ data/entries.json       # every directory entry + category - the whole dataset
+├─ messages/{hi,en}.json   # UI translations
+├─ public/images/entries/  # site screenshots
+└─ src/
+   ├─ app/[locale]/        # pages - home, category, playlist, submit, about
+   ├─ components/          # Header, EntryCard, ThemeToggle, LanguageSwitcher, ...
+   ├─ i18n/                # next-intl routing config
+   └─ lib/data.ts          # typed data-access layer
 ```
 
-`category` must match one of the slugs in the `categories` array in the same file. `image` should point to a file you've added under `public/images/entries/` (or be `null` to fall back to the placeholder "no signal" card). Static pages regenerate automatically on the next build/deploy - no code changes needed for a new entry.
+## 🛠️ Tech stack
 
-## Known follow-ups (not yet built)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-- **Submit flow**: `/submit` is currently a static instructions page (open a PR against `data/entries.json`). A real form would need a serverless handler - deliberately deferred per `REQUIREMENTS.md` §14 to avoid adding a database on a free-tier deploy.
-- **Localized OG images**: `opengraph-image.tsx` currently renders Latin-only text. Rendering the Hindi variant needs a Devanagari font file passed to `ImageResponse`'s `fonts` option (e.g. fetch Noto Sans Devanagari at generation time) - left out here since it depends on an external font URL that couldn't be verified in this environment.
-- **Client-side search**: not built; the 69-entry dataset is small enough that category pages + browser find-in-page cover most of it for now.
+Plus [next-intl](https://next-intl.dev) for i18n routing, [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode, [lucide-react](https://lucide.dev) for icons, and `next/og` for the generated favicon and OG images.
 
-## Stack
+## 🖼️ Content & image attribution
 
-Next.js (App Router, SSG) · TypeScript · Tailwind CSS v4 · next-intl · next-themes · lucide-react icons · next/og for the favicon/OG image generation.
+`data/entries.json` is sourced directly from the original directory's own listing, not guessed or hand-typed - 68 community entries plus the original `saloon.wtf` listing, 69 total across 9 categories.
 
-## License
+Screenshot thumbnails under `public/images/entries/` are previews of the linked third-party sites, shown here for identification purposes the same way any directory does - they weren't captured by this project and **aren't covered by the MIT license below**. If you're a site owner and want yours removed or swapped, or you're forking this and want to sidestep the question entirely: replace the file (same filename = same slug) or set that entry's `"image"` to `null`. No code changes needed either way.
 
-Source code is MIT-licensed (see `LICENSE`). The screenshot images under `public/images/entries/` are excluded from that grant - see "Image provenance" above.
+## 🗺️ Roadmap
+
+- [ ] Real submission form (currently PR-only, by design - keeps this on a free tier with no backend)
+- [ ] Localized (Hindi) OG images - currently Latin-only, needs a bundled Devanagari font
+- [ ] Client-side search
+- [ ] More sites - [add yours](#add-your-playlist-site)
+
+## 📄 License
+
+Code is MIT-licensed - see [`LICENSE`](./LICENSE). Screenshot images are excluded from that grant (see [Content & image attribution](#content--image-attribution)).
+
+## 🙏 Acknowledgments
+
+Every site linked from Goonj belongs to its own creator, credited on its card. The trend itself started with [@ybhrdwj](https://x.com/ybhrdwj)'s [saloon.wtf](https://saloon.wtf) - this project just tries to keep all of it findable in one place.

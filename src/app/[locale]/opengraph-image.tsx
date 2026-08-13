@@ -19,8 +19,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(160deg, #ffffff 0%, #f0e6d2 100%)",
-          color: "#241811",
+          background: "linear-gradient(160deg, #241811 0%, #180f0c 100%)",
+          color: "#f5e9d6",
         }}
       >
         <div
@@ -28,7 +28,7 @@ export default function OpengraphImage() {
             display: "flex",
             fontSize: 28,
             letterSpacing: 10,
-            color: "#a85a15",
+            color: "#e2983c",
             textTransform: "uppercase",
           }}
         >
@@ -37,7 +37,7 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", fontSize: 72, marginTop: 24, fontWeight: 700 }}>
           GOONJ
         </div>
-        <div style={{ display: "flex", fontSize: 28, marginTop: 28, color: "#6b5a47" }}>
+        <div style={{ display: "flex", fontSize: 28, marginTop: 28, color: "#c1a98b" }}>
           Every playlist of old memories, in one place.
         </div>
       </div>

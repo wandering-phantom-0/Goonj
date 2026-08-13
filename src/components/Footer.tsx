@@ -1,7 +1,9 @@
 import { useTranslations } from "next-intl";
+import GithubIcon from "./GithubIcon";
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
 
   return (
     <footer className="border-t border-line pb-16 pt-12">
@@ -12,6 +14,15 @@ export default function Footer() {
           {t("curated")}
         </p>
         <p className="mt-2 text-xs text-paper-faint">{t("sourceNote")}</p>
+        <a
+          href="https://github.com/wandering-phantom-0/Goonj"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-1.5 text-xs text-tape hover:underline"
+        >
+          <GithubIcon size={13} />
+          {tNav("viewOnGithub")}
+        </a>
       </div>
     </footer>
   );

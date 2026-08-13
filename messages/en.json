@@ -12,7 +12,8 @@
     "about": "Story",
     "switchLanguage": "हिन्दी में देखें",
     "languageLabel": "Language",
-    "switchTheme": "Toggle theme"
+    "switchTheme": "Toggle theme",
+    "viewOnGithub": "View source on GitHub"
   },
   "home": {
     "eyebrow": "A directory",

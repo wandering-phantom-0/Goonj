@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import GithubIcon from "./GithubIcon";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 
@@ -29,6 +30,15 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <LanguageSwitcher />
+          <a
+            href="https://github.com/wandering-phantom-0/Goonj"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("nav.viewOnGithub")}
+            className="chip flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+          >
+            <GithubIcon size={14} />
+          </a>
         </div>
       </div>
     </header>

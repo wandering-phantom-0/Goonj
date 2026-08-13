@@ -17,6 +17,11 @@ export async function generateMetadata({
       canonical: `/${locale}/about`,
       languages: { hi: "/hi/about", en: "/en/about" },
     },
+    openGraph: {
+      title: t("title"),
+      description: t("body1"),
+      url: `/${locale}/about`,
+    },
   };
 }
 

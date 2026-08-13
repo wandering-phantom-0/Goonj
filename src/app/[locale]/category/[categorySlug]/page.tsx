@@ -42,6 +42,11 @@ export async function generateMetadata({
       canonical: `/${locale}/category/${categorySlug}`,
       languages: { hi: `/hi/category/${categorySlug}`, en: `/en/category/${categorySlug}` },
     },
+    openGraph: {
+      title: label,
+      description: t("description", { category: label, count }),
+      url: `/${locale}/category/${categorySlug}`,
+    },
   };
 }
 

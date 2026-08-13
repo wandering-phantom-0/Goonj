@@ -54,6 +54,7 @@ export async function generateMetadata({
       siteName: t("name"),
       title: t("name"),
       description: t("description"),
+      url: `${siteUrl}/${locale}`,
       locale: locale === "hi" ? "hi_IN" : "en_US",
       type: "website",
     },

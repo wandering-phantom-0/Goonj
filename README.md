@@ -4,7 +4,7 @@
 
 **One place for every nostalgic Indian playlist site.**
 
-[Live Demo](https://goonj0.vercel.app) · [Add Your Site](#add-your-playlist-site) · [Getting Started](#getting-started)
+[Live Demo](https://goonj.wtf) · [Add Your Site](#add-your-playlist-site) · [Getting Started](#getting-started)
 
 ![License](https://img.shields.io/github/license/wandering-phantom-0/Goonj?color=blue)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
@@ -62,7 +62,7 @@ Built something in this spirit - a barbershop station, a bus-stand mixtape, a fe
 3. Drop a screenshot at `public/images/entries/your-site-slug.jpg` (or leave `image` as `null` to use the placeholder card)
 4. Open a PR - no code changes needed, `category` just has to match one of the slugs already in the `categories` array in that same file
 
-The same steps are also written out on the live [`/submit`](https://goonj0.vercel.app/submit) page.
+The same steps are also written out on the live [`/submit`](https://goonj.wtf/submit) page.
 
 ## 🚀 Getting started
 
@@ -126,3 +126,5 @@ Code is MIT-licensed - see [`LICENSE`](./LICENSE). Screenshot images are exclude
 ## 🙏 Acknowledgments
 
 Every site linked from Goonj belongs to its own creator, credited on its card. The trend itself started with [@ybhrdwj](https://x.com/ybhrdwj)'s [saloon.wtf](https://saloon.wtf) - this project just tries to keep all of it findable in one place.
+
+Questions, new sites to add, or just want to say hi - [@wandering_phant](https://x.com/wandering_phant) on X.

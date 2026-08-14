@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import GithubIcon from "./GithubIcon";
+import XIcon from "./XIcon";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -14,15 +15,26 @@ export default function Footer() {
           {t("curated")}
         </p>
         <p className="mt-2 text-xs text-paper-faint">{t("sourceNote")}</p>
-        <a
-          href="https://github.com/wandering-phantom-0/Goonj"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-1.5 text-xs text-tape hover:underline"
-        >
-          <GithubIcon size={13} />
-          {tNav("viewOnGithub")}
-        </a>
+        <div className="mt-4 flex items-center justify-center gap-4">
+          <a
+            href="https://github.com/wandering-phantom-0/Goonj"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-tape hover:underline"
+          >
+            <GithubIcon size={13} />
+            {tNav("viewOnGithub")}
+          </a>
+          <a
+            href="https://x.com/wandering_phant"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-tape hover:underline"
+          >
+            <XIcon size={13} />
+            {tNav("followOnX")}
+          </a>
+        </div>
       </div>
     </footer>
   );

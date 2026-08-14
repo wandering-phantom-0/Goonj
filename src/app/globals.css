@@ -20,6 +20,9 @@
   --tape: #a85a15;
   --tape-dim: #7a4110;
   --tape-soft: rgba(168, 90, 21, 0.08);
+  /* Hero vignette strength: the light hero art is already a very pale wash,
+     so a heavy ink-colored radial on top of it just bleaches it out further. */
+  --hero-overlay: 28%;
   color-scheme: light;
 }
 
@@ -34,6 +37,7 @@
   --tape: #e2983c;
   --tape-dim: #a96f26;
   --tape-soft: rgba(226, 152, 60, 0.14);
+  --hero-overlay: 90%;
   color-scheme: dark;
 }
 

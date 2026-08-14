@@ -5,7 +5,7 @@ export default function Hero() {
   const t = useTranslations();
 
   return (
-    <header className="relative overflow-hidden border-b border-line/60">
+    <header className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/images/hero-light.jpg"
@@ -27,7 +27,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(58% 75% at 50% 42%, color-mix(in srgb, var(--color-ink) 90%, transparent) 0%, transparent 70%), linear-gradient(180deg, var(--color-ink) 0%, transparent 20%, transparent 65%, var(--color-ink) 100%)",
+            "radial-gradient(58% 75% at 50% 42%, color-mix(in srgb, var(--color-ink) var(--hero-overlay), transparent) 0%, transparent 70%), linear-gradient(180deg, var(--color-ink) 0%, transparent 20%, transparent 65%, var(--color-ink) 100%)",
         }}
         aria-hidden="true"
       />

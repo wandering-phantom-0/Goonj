@@ -1103,6 +1103,22 @@
       "pinned": false,
       "views": 2,
       "image": "/images/entries/marwadi-heritage.jpg"
+    },
+    {
+      "id": 69,
+      "slug": "truckplaylist",
+      "title": "हॉर्न ओके प्लीज़",
+      "title_en": "Horn OK Please",
+      "desc": "Songs that play in Indian trucks on the highway. Dhaba stops, night driving.",
+      "owner": "@thehirenthakkar",
+      "url": "http://truckplaylist.wtf",
+      "domain": "truckplaylist.wtf",
+      "category": "safar",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/truckplaylist.jpg"
     }
   ],
   "categories": [

@@ -63,7 +63,7 @@ export default function ViewsAndLikes({ slug }: { slug: string }) {
     <div className="flex items-center gap-4 text-sm text-paper-dim">
       <span className="inline-flex items-center gap-1.5" aria-live="polite">
         <Eye size={15} aria-hidden="true" />
-        {views === null ? "-" : views.toLocaleString()} {t("viewsLabel")}
+        {views === null ? "-" : views.toLocaleString("en-IN")} {t("viewsLabel")}
       </span>
 
       <button
@@ -79,7 +79,7 @@ export default function ViewsAndLikes({ slug }: { slug: string }) {
           aria-hidden="true"
           className={liked ? "fill-tape text-tape" : "text-paper-dim"}
         />
-        {likes === null ? "-" : likes.toLocaleString()}
+        {likes === null ? "-" : likes.toLocaleString("en-IN")}
       </button>
     </div>
   );

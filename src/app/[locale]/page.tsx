@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 import Hero from "@/components/Hero";
 import FeaturedEntry from "@/components/FeaturedEntry";
 import CategoryChips from "@/components/CategoryChips";
-import EntryCard from "@/components/EntryCard";
+import EntryGrid from "@/components/EntryGrid";
 import JsonLd from "@/components/JsonLd";
 import { getFeaturedEntry, getGridEntries, getEntryDisplayName } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
@@ -94,11 +94,7 @@ function HomeContent() {
           <CategoryChips activeSlug={null} />
         </section>
 
-        <section className="grid grid-cols-1 gap-x-6 gap-y-10 pb-20 sm:grid-cols-2 sm:gap-y-14 sm:pb-28 lg:grid-cols-3 lg:gap-x-8 2xl:grid-cols-4">
-          {entries.map((entry) => (
-            <EntryCard key={entry.slug} entry={entry} />
-          ))}
-        </section>
+        <EntryGrid entries={entries} />
       </div>
     </div>
   );

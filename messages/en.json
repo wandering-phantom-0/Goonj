@@ -25,7 +25,13 @@
     "allCategory": "All",
     "submitCta": "Submit yours",
     "submitCtaSub": "अपनी साइट जोड़ें",
-    "viewAll": "View all categories"
+    "viewAll": "View all categories",
+    "sortLabel": "Sort",
+    "sort": {
+      "default": "Default",
+      "views": "Most viewed",
+      "likes": "Most liked"
+    }
   },
   "card": {
     "visit": "Open {name}",

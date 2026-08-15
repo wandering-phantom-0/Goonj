@@ -1,12 +1,22 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Eye, Heart } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getEntryDisplayName, type Entry } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
 
-export default function EntryCard({ entry }: { entry: Entry }) {
+interface EntryCardProps {
+  entry: Entry;
+  views?: number;
+  likes?: number;
+  liked?: boolean;
+  onToggleLike?: (slug: string) => void;
+}
+
+export default function EntryCard({ entry, views, likes, liked, onToggleLike }: EntryCardProps) {
   const t = useTranslations("card");
+  const tPlaylist = useTranslations("playlist");
+  const showStats = views !== undefined;
   const locale = useLocale() as Locale;
   const name = getEntryDisplayName(entry);
   const isOffline = entry.status === "offline";
@@ -75,6 +85,29 @@ export default function EntryCard({ entry }: { entry: Entry }) {
           {entry.owner}
         </a>
       </div>
+
+      {showStats && (
+        <div className="mt-3 flex items-center gap-3 border-t border-line pt-3 text-xs text-paper-dim">
+          <span className="inline-flex items-center gap-1" aria-live="polite">
+            <Eye size={13} aria-hidden="true" />
+            {(views ?? 0).toLocaleString("en-IN")}
+          </span>
+          <button
+            type="button"
+            onClick={() => onToggleLike?.(entry.slug)}
+            aria-pressed={liked}
+            aria-label={liked ? tPlaylist("likedAction") : tPlaylist("likeAction")}
+            className="inline-flex items-center gap-1 transition-colors hover:text-paper"
+          >
+            <Heart
+              size={13}
+              aria-hidden="true"
+              className={liked ? "fill-tape text-tape" : ""}
+            />
+            {(likes ?? 0).toLocaleString("en-IN")}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

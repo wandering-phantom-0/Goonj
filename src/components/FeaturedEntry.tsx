@@ -20,7 +20,7 @@ export default function FeaturedEntry({ entry }: { entry: Entry }) {
         <a
           href={entry.url}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
           className="block"
           aria-label={entry.title}
         >
@@ -57,7 +57,7 @@ export default function FeaturedEntry({ entry }: { entry: Entry }) {
           <a
             href={`https://x.com/${entry.owner.replace("@", "")}`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="mt-2 inline-flex items-center gap-1 text-xs text-tape hover:underline"
           >
             {entry.owner}

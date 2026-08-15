@@ -178,7 +178,7 @@ function PlaylistContent({ slug }: { slug: string }) {
               <a
                 href={`https://x.com/${entry.owner.replace("@", "")}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="text-tape hover:underline"
               >
                 {entry.owner}
@@ -198,7 +198,7 @@ function PlaylistContent({ slug }: { slug: string }) {
         <a
           href={entry.url}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-tape px-5 py-2.5 text-sm font-medium text-ink transition-opacity hover:opacity-90"
         >
           {t("visitSite")}

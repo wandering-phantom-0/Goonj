@@ -17,7 +17,7 @@ export default function EntryCard({ entry }: { entry: Entry }) {
       <a
         href={entry.url}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="block"
         aria-label={t("visit", { name })}
       >
@@ -52,7 +52,7 @@ export default function EntryCard({ entry }: { entry: Entry }) {
         <a
           href={entry.url}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
           aria-label={t("visit", { name })}
           className="mt-1 shrink-0 rounded-full border border-line p-1.5 text-tape transition-colors hover:border-tape-dim"
         >
@@ -69,7 +69,7 @@ export default function EntryCard({ entry }: { entry: Entry }) {
         <a
           href={`https://x.com/${entry.owner.replace("@", "")}`}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
           className="text-paper-faint transition-colors hover:text-paper-dim hover:underline"
         >
           {entry.owner}

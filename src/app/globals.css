@@ -159,3 +159,51 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* Like button: a Twitter-style scale-bounce on the heart plus a quick
+   radial burst behind it, only played going TO the liked state. */
+@keyframes like-pop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.75);
+  }
+  55% {
+    transform: scale(1.4);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.like-pop {
+  animation: like-pop 480ms cubic-bezier(0.17, 0.89, 0.32, 1.49);
+}
+
+@keyframes like-burst {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.like-burst {
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.5) 0%, transparent 70%);
+  animation: like-burst 500ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .like-pop,
+  .like-burst {
+    animation: none;
+  }
+}

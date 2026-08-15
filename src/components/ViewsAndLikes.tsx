@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Eye, Heart } from "lucide-react";
+import { Eye } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { formatCount } from "@/lib/format";
+import LikeButton from "./LikeButton";
 
 export default function ViewsAndLikes({ slug }: { slug: string }) {
   const t = useTranslations("playlist");
@@ -63,24 +65,18 @@ export default function ViewsAndLikes({ slug }: { slug: string }) {
     <div className="flex items-center gap-4 text-sm text-paper-dim">
       <span className="inline-flex items-center gap-1.5" aria-live="polite">
         <Eye size={15} aria-hidden="true" />
-        {views === null ? "-" : views.toLocaleString("en-IN")} {t("viewsLabel")}
+        {views === null ? "-" : formatCount(views)} {t("viewsLabel")}
       </span>
 
-      <button
-        type="button"
-        onClick={toggleLike}
+      <LikeButton
+        liked={liked}
+        count={likes ?? 0}
+        onToggle={toggleLike}
         disabled={pending}
-        aria-pressed={liked}
-        aria-label={liked ? t("likedAction") : t("likeAction")}
-        className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 transition-colors hover:border-tape-dim disabled:opacity-60"
-      >
-        <Heart
-          size={15}
-          aria-hidden="true"
-          className={liked ? "fill-tape text-tape" : "text-paper-dim"}
-        />
-        {likes === null ? "-" : likes.toLocaleString("en-IN")}
-      </button>
+        label={liked ? t("likedAction") : t("likeAction")}
+        size={15}
+        className="rounded-full border border-line px-3 py-1 text-paper-dim transition-colors hover:border-tape-dim disabled:opacity-60"
+      />
     </div>
   );
 }

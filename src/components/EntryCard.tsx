@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { ExternalLink, Eye, Heart } from "lucide-react";
+import { ExternalLink, Eye } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getEntryDisplayName, type Entry } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
+import { formatCount } from "@/lib/format";
+import LikeButton from "./LikeButton";
 
 interface EntryCardProps {
   entry: Entry;
@@ -24,27 +26,22 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
 
   return (
     <div className="tape-card flex flex-col p-4">
-      <a
-        href={entry.url}
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        className="block"
-        aria-label={t("visit", { name })}
-      >
-        <div className="relative aspect-video overflow-hidden rounded-lg bg-ink-3">
+      <div className="relative aspect-video overflow-hidden rounded-lg bg-ink-3">
+        <a
+          href={entry.url}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          className="absolute inset-0 block"
+          aria-label={t("visit", { name })}
+        >
           {showImage ? (
-            <>
-              <Image
-                src={entry.image as string}
-                alt={`${name} website screenshot`}
-                fill
-                sizes="(min-width: 1536px) 22vw, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-                className="object-cover object-top"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-3 pb-1.5 pt-5">
-                <span className="font-display text-xs text-white/90">{entry.domain}</span>
-              </div>
-            </>
+            <Image
+              src={entry.image as string}
+              alt={`${name} website screenshot`}
+              fill
+              sizes="(min-width: 1536px) 22vw, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+              className="object-cover object-top"
+            />
           ) : (
             <div className="no-signal-stripes flex h-full items-center justify-between px-5">
               <span className="tape-reel h-9 w-9 shrink-0" aria-hidden="true" />
@@ -54,8 +51,32 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
               <span className="tape-reel h-9 w-9 shrink-0" aria-hidden="true" />
             </div>
           )}
-        </div>
-      </a>
+        </a>
+
+        {showImage && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/80 to-transparent px-3 pb-1.5 pt-6">
+            <span className="min-w-0 flex-1 truncate font-display text-xs text-white/90">
+              {entry.domain}
+            </span>
+            {showStats && (
+              <div className="pointer-events-auto flex shrink-0 items-center gap-2 text-[11px] text-white/90">
+                <span className="inline-flex items-center gap-1" aria-live="polite">
+                  <Eye size={12} aria-hidden="true" />
+                  {formatCount(views ?? 0)}
+                </span>
+                <LikeButton
+                  liked={Boolean(liked)}
+                  count={likes ?? 0}
+                  onToggle={() => onToggleLike?.(entry.slug)}
+                  label={liked ? tPlaylist("likedAction") : tPlaylist("likeAction")}
+                  size={13}
+                  className="text-white/90 transition-colors hover:text-white"
+                />
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       <div className="mt-4 flex items-start justify-between gap-2">
         <h3 className="font-display text-lg leading-snug text-paper">{name}</h3>
@@ -85,29 +106,6 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
           {entry.owner}
         </a>
       </div>
-
-      {showStats && (
-        <div className="mt-3 flex items-center gap-3 border-t border-line pt-3 text-xs text-paper-dim">
-          <span className="inline-flex items-center gap-1" aria-live="polite">
-            <Eye size={13} aria-hidden="true" />
-            {(views ?? 0).toLocaleString("en-IN")}
-          </span>
-          <button
-            type="button"
-            onClick={() => onToggleLike?.(entry.slug)}
-            aria-pressed={liked}
-            aria-label={liked ? tPlaylist("likedAction") : tPlaylist("likeAction")}
-            className="inline-flex items-center gap-1 transition-colors hover:text-paper"
-          >
-            <Heart
-              size={13}
-              aria-hidden="true"
-              className={liked ? "fill-tape text-tape" : ""}
-            />
-            {(likes ?? 0).toLocaleString("en-IN")}
-          </button>
-        </div>
-      )}
     </div>
   );
 }

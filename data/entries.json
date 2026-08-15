@@ -1119,6 +1119,22 @@
       "pinned": false,
       "views": null,
       "image": "/images/entries/truckplaylist.jpg"
+    },
+    {
+      "id": 71,
+      "slug": "marathi-songs",
+      "title": "मराठी गाणी",
+      "title_en": "Marathi Gaani",
+      "desc": "Old Marathi songs - the OG Marathi saloon.",
+      "owner": "Unknown",
+      "url": "http://marathi-songs.vercel.app",
+      "domain": "marathi-songs.vercel.app",
+      "category": "kshetriya",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/marathi-songs.jpg"
     }
   ],
   "categories": [

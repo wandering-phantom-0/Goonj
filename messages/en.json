@@ -25,7 +25,13 @@
     "allCategory": "All",
     "submitCta": "Submit yours",
     "submitCtaSub": "अपनी साइट जोड़ें",
-    "viewAll": "View all categories"
+    "viewAll": "View all categories",
+    "sortLabel": "Sort",
+    "sort": {
+      "default": "Default",
+      "views": "Most viewed",
+      "likes": "Most liked"
+    }
   },
   "card": {
     "visit": "Open {name}",
@@ -48,7 +54,10 @@
     "statusLive": "Live",
     "statusOffline": "Offline",
     "similarTitle": "More in this category",
-    "backLink": "Back to the directory"
+    "backLink": "Back to the directory",
+    "viewsLabel": "views",
+    "likeAction": "Like",
+    "likedAction": "Liked"
   },
   "footer": {
     "storyTitle": "One idea, many stories",

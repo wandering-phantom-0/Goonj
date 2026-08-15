@@ -30,3 +30,8 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Claude Code tooling artifacts (not app code)
+/.claude
+/.agents
+skills-lock.json

@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import EntryCard from "@/components/EntryCard";
 import JsonLd from "@/components/JsonLd";
+import ViewsAndLikes from "@/components/ViewsAndLikes";
 import {
   getAllEntries,
   getCategoryLabel,
@@ -160,6 +161,10 @@ function PlaylistContent({ slug }: { slug: string }) {
 
         <h1 className="mt-6 font-display text-3xl text-paper sm:text-4xl">{name}</h1>
         <p className="mt-3 text-base leading-relaxed text-paper-dim">{entry.desc}</p>
+
+        <div className="mt-4">
+          <ViewsAndLikes slug={entry.slug} />
+        </div>
 
         <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-5 text-sm sm:grid-cols-3">
           {entry.category && (

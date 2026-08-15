@@ -6,8 +6,9 @@ import { ArrowUpDown } from "lucide-react";
 import type { Entry } from "@/lib/data";
 import EntryCard from "./EntryCard";
 
-type SortKey = "default" | "views" | "likes";
-const SORT_KEYS: SortKey[] = ["default", "views", "likes"];
+type SortKey = "default" | "views" | "likes" | "offline";
+const SORT_KEYS: SortKey[] = ["default", "views", "likes", "offline"];
+const isOffline = (e: Entry) => e.status === "offline";
 
 interface CountsResponse {
   views: Record<string, number>;
@@ -36,11 +37,24 @@ export default function EntryGrid({ entries }: { entries: Entry[] }) {
   const getLikes = (slug: string) => counts?.likes[slug] ?? 0;
 
   const sortedEntries = useMemo(() => {
-    if (sortKey === "default") return entries;
     const copy = [...entries];
-    copy.sort((a, b) =>
-      sortKey === "views" ? getViews(b) - getViews(a) : getLikes(b.slug) - getLikes(a.slug)
-    );
+
+    if (sortKey === "offline") {
+      // Surface offline/non-working entries first, for review.
+      copy.sort((a, b) => Number(isOffline(b)) - Number(isOffline(a)));
+      return copy;
+    }
+
+    // Every other mode: live entries always before offline ones, then the
+    // chosen criterion within each group. Array.sort is stable, so
+    // "default" just keeps each group's original relative order.
+    copy.sort((a, b) => {
+      const offlineDiff = Number(isOffline(a)) - Number(isOffline(b));
+      if (offlineDiff !== 0) return offlineDiff;
+      if (sortKey === "views") return getViews(b) - getViews(a);
+      if (sortKey === "likes") return getLikes(b.slug) - getLikes(a.slug);
+      return 0;
+    });
     return copy;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entries, sortKey, counts]);
@@ -95,7 +109,7 @@ export default function EntryGrid({ entries }: { entries: Entry[] }) {
             key={key}
             type="button"
             onClick={() => setSortKey(key)}
-            disabled={key !== "default" && !counts}
+            disabled={(key === "views" || key === "likes") && !counts}
             data-active={sortKey === key}
             className="chip rounded-full px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50"
           >

@@ -30,7 +30,8 @@
     "sort": {
       "default": "Default",
       "views": "Most viewed",
-      "likes": "Most liked"
+      "likes": "Most liked",
+      "offline": "Offline"
     }
   },
   "card": {

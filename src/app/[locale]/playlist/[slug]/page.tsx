@@ -15,6 +15,7 @@ import {
   getEntryBySlug,
   getEntryDisplayName,
   getSimilarEntries,
+  getOwnerUrl,
 } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -90,7 +91,10 @@ function PlaylistContent({ slug }: { slug: string }) {
     url: entry.url,
     image: entry.image ? `${siteUrl}${entry.image}` : undefined,
     genre: categoryLabel || undefined,
-    creator: { "@type": "Person", name: entry.owner.replace("@", "") },
+    creator:
+      entry.owner !== "Unknown"
+        ? { "@type": "Person", name: entry.owner.replace("@", "") }
+        : undefined,
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -180,14 +184,18 @@ function PlaylistContent({ slug }: { slug: string }) {
               {t("submittedByLabel")}
             </dt>
             <dd className="mt-1">
-              <a
-                href={`https://x.com/${entry.owner.replace("@", "")}`}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="text-tape hover:underline"
-              >
-                {entry.owner}
-              </a>
+              {getOwnerUrl(entry) ? (
+                <a
+                  href={getOwnerUrl(entry)!}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="text-tape hover:underline"
+                >
+                  {entry.owner}
+                </a>
+              ) : (
+                <span className="text-paper">{entry.owner}</span>
+              )}
             </dd>
           </div>
           <div>

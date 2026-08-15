@@ -48,7 +48,10 @@
     "statusLive": "Live",
     "statusOffline": "Offline",
     "similarTitle": "More in this category",
-    "backLink": "Back to the directory"
+    "backLink": "Back to the directory",
+    "viewsLabel": "views",
+    "likeAction": "Like",
+    "likedAction": "Liked"
   },
   "footer": {
     "storyTitle": "One idea, many stories",

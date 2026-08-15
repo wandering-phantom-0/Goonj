@@ -63,7 +63,7 @@ export default function ViewsAndLikes({ slug }: { slug: string }) {
 
   return (
     <div className="flex items-center gap-4 text-sm text-paper-dim">
-      <span className="inline-flex items-center gap-1.5" aria-live="polite">
+      <span className="inline-flex items-center gap-1.5 leading-none" aria-live="polite">
         <Eye size={15} aria-hidden="true" />
         {views === null ? "-" : formatCount(views)} {t("viewsLabel")}
       </span>

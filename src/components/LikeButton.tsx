@@ -39,7 +39,7 @@ export default function LikeButton({
       disabled={disabled}
       aria-pressed={liked}
       aria-label={label}
-      className={`inline-flex items-center gap-1 p-1 ${className}`}
+      className={`inline-flex items-center gap-1 p-1 leading-none ${className}`}
     >
       <span className="relative inline-flex h-4 w-4 items-center justify-center">
         {burstKey > 0 && (

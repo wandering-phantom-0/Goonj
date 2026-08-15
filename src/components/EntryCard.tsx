@@ -59,7 +59,7 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
               {entry.domain}
             </span>
             {showStats && (
-              <div className="pointer-events-auto flex shrink-0 items-center gap-2 text-[11px] text-white/90">
+              <div className="pointer-events-auto flex shrink-0 items-center gap-2 text-[11px] leading-none text-white/90">
                 <span className="inline-flex items-center gap-1" aria-live="polite">
                   <Eye size={12} aria-hidden="true" />
                   {formatCount(views ?? 0)}

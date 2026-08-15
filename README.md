@@ -103,8 +103,9 @@ goonj/
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Upstash](https://img.shields.io/badge/Upstash-00E9A3?style=for-the-badge&logo=upstash&logoColor=black)
 
-Plus [next-intl](https://next-intl.dev) for i18n routing, [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode, [lucide-react](https://lucide.dev) for icons, and `next/og` for the generated favicon and OG images.
+Plus [next-intl](https://next-intl.dev) for i18n routing, [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode, [lucide-react](https://lucide.dev) for icons, `next/og` for the generated favicon and OG images, and [Upstash Redis](https://upstash.com) for live view/like counts - see [docs/views-and-likes.md](./docs/views-and-likes.md) for how that's wired up.
 
 ## 🖼️ Content & image attribution
 

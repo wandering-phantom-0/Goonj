@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ExternalLink } from "lucide-react";
-import type { Entry } from "@/lib/data";
+import { getOwnerUrl, type Entry } from "@/lib/data";
 
 export default function FeaturedEntry({ entry }: { entry: Entry }) {
   const t = useTranslations("home");
@@ -54,15 +54,19 @@ export default function FeaturedEntry({ entry }: { entry: Entry }) {
         <div className="pt-5 text-center">
           <h2 className="font-display text-2xl text-paper sm:text-3xl">{entry.title}</h2>
           <p className="mt-2 text-sm text-paper-dim">{entry.desc}</p>
-          <a
-            href={`https://x.com/${entry.owner.replace("@", "")}`}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="mt-2 inline-flex items-center gap-1 text-xs text-tape hover:underline"
-          >
-            {entry.owner}
-            <ExternalLink size={11} aria-hidden="true" />
-          </a>
+          {getOwnerUrl(entry) ? (
+            <a
+              href={getOwnerUrl(entry)!}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="mt-2 inline-flex items-center gap-1 text-xs text-tape hover:underline"
+            >
+              {entry.owner}
+              <ExternalLink size={11} aria-hidden="true" />
+            </a>
+          ) : (
+            <span className="mt-2 inline-flex text-xs text-paper-faint">{entry.owner}</span>
+          )}
         </div>
       </div>
     </section>

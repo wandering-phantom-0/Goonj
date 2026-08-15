@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { ExternalLink, Eye } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { getEntryDisplayName, type Entry } from "@/lib/data";
+import { getEntryDisplayName, getOwnerUrl, type Entry } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
 import { formatCount } from "@/lib/format";
 import LikeButton from "./LikeButton";
@@ -97,14 +97,18 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
         <Link href={`/playlist/${entry.slug}`} className="font-medium text-tape hover:underline">
           {locale === "hi" ? "और जानें" : "Learn more"}
         </Link>
-        <a
-          href={`https://x.com/${entry.owner.replace("@", "")}`}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          className="text-paper-faint transition-colors hover:text-paper-dim hover:underline"
-        >
-          {entry.owner}
-        </a>
+        {getOwnerUrl(entry) ? (
+          <a
+            href={getOwnerUrl(entry)!}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-paper-faint transition-colors hover:text-paper-dim hover:underline"
+          >
+            {entry.owner}
+          </a>
+        ) : (
+          <span className="text-paper-faint">{entry.owner}</span>
+        )}
       </div>
     </div>
   );

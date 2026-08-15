@@ -1135,6 +1135,22 @@
       "pinned": false,
       "views": null,
       "image": "/images/entries/marathi-songs.jpg"
+    },
+    {
+      "id": 72,
+      "slug": "hornokplease",
+      "title": "ट्रक वाला",
+      "title_en": "Truck Wala",
+      "desc": "90s Bollywood highway bangers - the songs that blast out of Indian trucks.",
+      "owner": "Unknown",
+      "url": "http://hornokplease.xyz",
+      "domain": "hornokplease.xyz",
+      "category": "safar",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/hornokplease.jpg"
     }
   ],
   "categories": [

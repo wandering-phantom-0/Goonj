@@ -184,26 +184,31 @@ body {
   animation: like-pop 480ms cubic-bezier(0.17, 0.89, 0.32, 1.49);
 }
 
-@keyframes like-burst {
+/* Small confetti-style particles flying outward from the heart's center
+   and fading, evoking Twitter's classic multi-colour heart-burst without
+   depending on their actual sprite asset. */
+@keyframes like-particle {
   0% {
-    transform: scale(0.3);
-    opacity: 0.55;
+    transform: rotate(var(--angle)) translateX(0) scale(0);
+    opacity: 1;
+  }
+  35% {
+    transform: rotate(var(--angle)) translateX(10px) scale(1.2);
+    opacity: 1;
   }
   100% {
-    transform: scale(2.6);
+    transform: rotate(var(--angle)) translateX(20px) scale(0.4);
     opacity: 0;
   }
 }
 
-.like-burst {
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.5) 0%, transparent 70%);
-  animation: like-burst 500ms ease-out;
+.like-particle {
+  animation: like-particle 600ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .like-pop,
-  .like-burst {
+  .like-particle {
     animation: none;
   }
 }

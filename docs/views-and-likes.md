@@ -24,7 +24,7 @@ Deliberately **not** IP-based (false positives on shared/NAT networks) or finger
 
 ## View counting
 
-`POST /api/entries/[slug]/views` seeds the counter from that entry's historical `views` value in `entries.json` on first write (`HSETNX`), then `HINCRBY`s - so counts don't regress to zero for entries that already had a number. Fires once per page mount on the playlist detail page; the homepage grid only reads, never increments.
+`POST /api/entries/[slug]/views` seeds the counter from that entry's historical `views` value in `entries.json` on first write (`HSETNX`), then `HINCRBY`s - so counts don't regress to zero for entries that already had a number. A view is counted the moment a visitor actually clicks through to the linked site - from a grid card, the featured card, category pages, similar entries, or the playlist detail page's own links - via a shared, per-tab-deduped `trackVisit()` helper (`src/lib/trackVisit.ts`), not just on loading the detail page.
 
 ## Abuse protection
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ExternalLink } from "lucide-react";
 import { getOwnerUrl, type Entry } from "@/lib/data";
+import { trackVisit } from "@/lib/trackVisit";
 
 export default function FeaturedEntry({ entry }: { entry: Entry }) {
   const t = useTranslations("home");
@@ -26,7 +27,7 @@ export default function FeaturedEntry({ entry }: { entry: Entry }) {
           className="block"
           aria-label={entry.title}
           onClick={() => {
-            fetch(`/api/entries/${entry.slug}/views`, { method: "POST" }).catch(() => {});
+            trackVisit(entry.slug);
           }}
         >
           <div className="relative aspect-video overflow-hidden rounded-lg bg-ink-3">

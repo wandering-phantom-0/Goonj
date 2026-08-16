@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { formatCount } from "@/lib/format";
+import { trackVisit } from "@/lib/trackVisit";
 import LikeButton from "./LikeButton";
 
 export default function ViewsAndLikes({ slug }: { slug: string }) {
@@ -12,16 +13,11 @@ export default function ViewsAndLikes({ slug }: { slug: string }) {
   const [likes, setLikes] = useState<number | null>(null);
   const [liked, setLiked] = useState(false);
   const [pending, setPending] = useState(false);
-  const hasCountedView = useRef(false);
 
   useEffect(() => {
-    if (hasCountedView.current) return;
-    hasCountedView.current = true;
-
-    fetch(`/api/entries/${slug}/views`, { method: "POST" })
-      .then((r) => r.json())
-      .then((data) => setViews(data.views))
-      .catch(() => {});
+    trackVisit(slug).then((newViews) => {
+      if (newViews !== null) setViews(newViews);
+    });
 
     fetch(`/api/entries/${slug}/likes`)
       .then((r) => r.json())

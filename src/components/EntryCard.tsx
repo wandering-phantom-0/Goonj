@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { getEntryDisplayName, getOwnerUrl, type Entry } from "@/lib/data";
 import type { Locale } from "@/i18n/routing";
 import { formatCount } from "@/lib/format";
+import { trackVisit } from "@/lib/trackVisit";
 import LikeButton from "./LikeButton";
 
 interface EntryCardProps {
@@ -15,7 +16,7 @@ interface EntryCardProps {
   likes?: number;
   liked?: boolean;
   onToggleLike?: (slug: string) => void;
-  onVisit?: (slug: string) => void;
+  onVisit?: (slug: string, views: number) => void;
 }
 
 export default function EntryCard({ entry, views, likes, liked, onToggleLike, onVisit }: EntryCardProps) {
@@ -27,6 +28,16 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike, on
   const isOffline = entry.status === "offline";
   const showImage = !isOffline && Boolean(entry.image);
 
+  // Self-contained so every place this card gets rendered (grid, similar
+  // entries, category pages) records a view on click-through, not just the
+  // ones a parent happens to wire an onVisit handler up for. trackVisit
+  // itself handles the per-session dedup, so this always fires safely.
+  function handleVisit() {
+    trackVisit(entry.slug).then((newViews) => {
+      if (newViews !== null) onVisit?.(entry.slug, newViews);
+    });
+  }
+
   return (
     <div className="tape-card flex flex-col p-4">
       <div className="relative aspect-video overflow-hidden rounded-lg bg-ink-3">
@@ -36,7 +47,7 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike, on
           rel="noopener noreferrer nofollow"
           className="absolute inset-0 block"
           aria-label={t("visit", { name })}
-          onClick={() => onVisit?.(entry.slug)}
+          onClick={handleVisit}
         >
           {showImage ? (
             <Image
@@ -90,7 +101,7 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike, on
           rel="noopener noreferrer nofollow"
           aria-label={t("visit", { name })}
           className="mt-1 shrink-0 rounded-full border border-line p-1.5 text-tape transition-colors hover:border-tape-dim"
-          onClick={() => onVisit?.(entry.slug)}
+          onClick={handleVisit}
         >
           <ExternalLink size={13} aria-hidden="true" />
         </a>

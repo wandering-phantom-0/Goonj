@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowUpDown } from "lucide-react";
 import type { Entry } from "@/lib/data";
@@ -21,6 +21,7 @@ export default function EntryGrid({ entries }: { entries: Entry[] }) {
   const [counts, setCounts] = useState<CountsResponse | null>(null);
   const [likedSlugs, setLikedSlugs] = useState<Set<string>>(new Set());
   const [sortKey, setSortKey] = useState<SortKey>("default");
+  const trackedVisits = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     // One request for the entire grid, regardless of entry count.
@@ -99,6 +100,22 @@ export default function EntryGrid({ entries }: { entries: Entry[] }) {
     );
   }
 
+  // A "view" is the visitor actually heading to the linked site. Most people
+  // do that straight from the thumbnail/external-link icon, without ever
+  // hitting our own /playlist/[slug] page - so it has to be tracked here,
+  // not just on that detail page. Deduped per slug per grid session so
+  // clicking both the image and the icon for the same card doesn't double-count.
+  function trackView(slug: string) {
+    if (trackedVisits.current.has(slug)) return;
+    trackedVisits.current.add(slug);
+
+    setCounts((prev) =>
+      prev ? { ...prev, views: { ...prev.views, [slug]: (prev.views[slug] ?? 0) + 1 } } : prev
+    );
+
+    fetch(`/api/entries/${slug}/views`, { method: "POST" }).catch(() => {});
+  }
+
   return (
     <div>
       <div className="mb-5 flex flex-wrap items-center justify-end gap-2 text-xs">
@@ -127,6 +144,7 @@ export default function EntryGrid({ entries }: { entries: Entry[] }) {
             likes={getLikes(entry.slug)}
             liked={likedSlugs.has(entry.slug)}
             onToggleLike={toggleLike}
+            onVisit={trackView}
           />
         ))}
       </section>

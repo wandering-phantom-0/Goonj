@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { ExternalLink, Eye } from "lucide-react";
@@ -13,9 +15,10 @@ interface EntryCardProps {
   likes?: number;
   liked?: boolean;
   onToggleLike?: (slug: string) => void;
+  onVisit?: (slug: string) => void;
 }
 
-export default function EntryCard({ entry, views, likes, liked, onToggleLike }: EntryCardProps) {
+export default function EntryCard({ entry, views, likes, liked, onToggleLike, onVisit }: EntryCardProps) {
   const t = useTranslations("card");
   const tPlaylist = useTranslations("playlist");
   const showStats = views !== undefined;
@@ -33,6 +36,7 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
           rel="noopener noreferrer nofollow"
           className="absolute inset-0 block"
           aria-label={t("visit", { name })}
+          onClick={() => onVisit?.(entry.slug)}
         >
           {showImage ? (
             <Image
@@ -86,6 +90,7 @@ export default function EntryCard({ entry, views, likes, liked, onToggleLike }: 
           rel="noopener noreferrer nofollow"
           aria-label={t("visit", { name })}
           className="mt-1 shrink-0 rounded-full border border-line p-1.5 text-tape transition-colors hover:border-tape-dim"
+          onClick={() => onVisit?.(entry.slug)}
         >
           <ExternalLink size={13} aria-hidden="true" />
         </a>

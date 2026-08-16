@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ExternalLink } from "lucide-react";
@@ -23,6 +25,9 @@ export default function FeaturedEntry({ entry }: { entry: Entry }) {
           rel="noopener noreferrer nofollow"
           className="block"
           aria-label={entry.title}
+          onClick={() => {
+            fetch(`/api/entries/${entry.slug}/views`, { method: "POST" }).catch(() => {});
+          }}
         >
           <div className="relative aspect-video overflow-hidden rounded-lg bg-ink-3">
             {entry.image ? (

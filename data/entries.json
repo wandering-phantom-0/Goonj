@@ -1593,6 +1593,23 @@
       "pinned": false,
       "views": null,
       "image": "/images/entries/hornokplease-delta.jpg"
+    },
+    {
+      "id": 99,
+      "slug": "bhajan-sandhya",
+      "title": "भजन संध्या",
+      "title_en": "Bhajan Sandhya",
+      "desc": "A quiet cinematic room for bhajans, chants, and devotion across India's sacred landscapes.",
+      "owner": "Rahul Singh",
+      "ownerUrl": "https://github.com/rahulsingh0890",
+      "url": "https://bhajansandhya.online",
+      "domain": "bhajansandhya.online",
+      "category": "bhakti",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/bhajan-sandhya.png"
     }
   ],
   "categories": [

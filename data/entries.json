@@ -1593,6 +1593,23 @@
       "pinned": false,
       "views": null,
       "image": "/images/entries/hornokplease-delta.jpg"
+    },
+    {
+      "id": 100,
+      "slug": "mandir-radio",
+      "title": "मंदिर रेडियो",
+      "title_en": "Mandir Radio",
+      "desc": "Bhajan, kirtan and aarti 24×7 over an animated temple — the sky follows the real time of day and festivals arrive on their own tithi.",
+      "owner": "Rohit Wadhwa",
+      "ownerUrl": "https://github.com/rohit-wadhwa",
+      "url": "https://mandir-radio.vercel.app",
+      "domain": "mandir-radio.vercel.app",
+      "category": "bhakti",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/mandir-radio.png"
     }
   ],
   "categories": [

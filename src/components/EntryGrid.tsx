@@ -20,7 +20,7 @@ export default function EntryGrid({ entries }: { entries: Entry[] }) {
   const t = useTranslations("home");
   const [counts, setCounts] = useState<CountsResponse | null>(null);
   const [likedSlugs, setLikedSlugs] = useState<Set<string>>(new Set());
-  const [sortKey, setSortKey] = useState<SortKey>("default");
+  const [sortKey, setSortKey] = useState<SortKey>("views");
 
   useEffect(() => {
     // One request for the entire grid, regardless of entry count.

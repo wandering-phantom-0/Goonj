@@ -1627,6 +1627,23 @@
       "pinned": false,
       "views": null,
       "image": "/images/entries/mandir-radio.png"
+    },
+    {
+      "id": 101,
+      "slug": "raksha-bandhan",
+      "title": "रक्षा बंधन",
+      "title_en": "Raksha Bandhan",
+      "desc": "Classic Raksha Bandhan (Rakhi) songs — celebrating the timeless bond of brothers and sisters.",
+      "owner": "Akshat Garg",
+      "ownerUrl": "https://github.com/akshat-g-07",
+      "url": "https://rakshabandhan.xyz",
+      "domain": "rakshabandhan.xyz",
+      "category": "tyohar",
+      "status": "live",
+      "featured": true,
+      "pinned": true,
+      "views": 4031,
+      "image": "/images/entries/raksha-bandhan.png"
     }
   ],
   "categories": [

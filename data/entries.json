@@ -1630,6 +1630,22 @@
     },
     {
       "id": 101,
+      "slug": "corporate-majdoor-flame",
+      "title": "कॉर्पोरेट मजदूर",
+      "title_en": "Corporate Majdoor",
+      "desc": "9 to 9. Music to survive. A 24×7 curated radio for the corporate workforce over a dynamic office aesthetic — featuring real-time local clocks, live online presence, and admin-controlled playlists.",
+      "owner": "@HarshVaishnav_",
+      "url": "https://corporate-majdoor-flame.vercel.app/",
+      "domain": "corporate-majdoor-flame.vercel.app",
+      "category": "dukaan",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": null
+    },
+    {
+      "id": 102,
       "slug": "raksha-bandhan",
       "title": "रक्षा बंधन",
       "title_en": "Raksha Bandhan",
@@ -1640,9 +1656,9 @@
       "domain": "rakshabandhan.xyz",
       "category": "tyohar",
       "status": "live",
-      "featured": true,
-      "pinned": true,
-      "views": 4031,
+      "featured": false,
+      "pinned": false,
+      "views": 6992,
       "image": "/images/entries/raksha-bandhan.png"
     }
   ],

@@ -1627,6 +1627,22 @@
       "pinned": false,
       "views": null,
       "image": "/images/entries/mandir-radio.png"
+    },
+    {
+      "id": 101,
+      "slug": "corporate-majdoor-flame",
+      "title": "कॉर्पोरेट मजदूर",
+      "title_en": "Corporate Majdoor",
+      "desc": "9 to 9. Music to survive. A 24×7 curated radio for the corporate workforce over a dynamic office aesthetic — featuring real-time local clocks, live online presence, and admin-controlled playlists.",
+      "owner": "@HarshVaishnav_",
+      "url": "https://corporate-majdoor-flame.vercel.app/",
+      "domain": "corporate-majdoor-flame.vercel.app",
+      "category": "dukaan",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": null
     }
   ],
   "categories": [

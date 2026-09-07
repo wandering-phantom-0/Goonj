@@ -1660,6 +1660,23 @@
       "pinned": false,
       "views": 6992,
       "image": "/images/entries/raksha-bandhan.png"
+    },
+    {
+      "id": 103,
+      "slug": "elevatex",
+      "title": "ElevateX",
+      "title_en": null,
+      "desc": "A nostalgic Indian gym music experience built around old-school training energy, iconic Indian tracks, and the feeling of one more rep.",
+      "owner": "@Gauravsingh0714",
+      "ownerUrl": "https://github.com/Gauravsingh0714",
+      "url": "https://elevatexgym.netlify.app/",
+      "domain": "elevatexgym.netlify.app",
+      "category": "dukaan",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/elevatex.jpg"
     }
   ],
   "categories": [

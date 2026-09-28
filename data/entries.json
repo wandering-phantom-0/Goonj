@@ -1633,7 +1633,7 @@
       "slug": "corporate-majdoor-flame",
       "title": "कॉर्पोरेट मजदूर",
       "title_en": "Corporate Majdoor",
-      "desc": "9 to 9. Music to survive. A 24×7 curated radio for the corporate workforce over a dynamic office aesthetic — featuring real-time local clocks, live online presence, and admin-controlled playlists.",
+      "desc": "9 to 9. Music to survive. A 24×7 curated radio for the corporate workforce over a dynamic office aesthetic.",
       "owner": "@HarshVaishnav_",
       "url": "https://corporate-majdoor-flame.vercel.app/",
       "domain": "corporate-majdoor-flame.vercel.app",
@@ -1642,6 +1642,7 @@
       "featured": false,
       "pinned": false,
       "views": null,
+      "image": "/images/entries/corporate-majdoor-flame.jpg"
       "image": null
     },
     {

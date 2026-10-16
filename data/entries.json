@@ -1121,6 +1121,22 @@
       "image": "/images/entries/truckplaylist.jpg"
     },
     {
+      "id": 70,
+      "slug": "mixed-vibes",
+      "title": "GaanaBazaar",
+      "title_en": null,
+      "desc": "Relive India's nostalgia through music, memories, and desi vibes.",
+      "owner": "@rittikraushan",
+      "url": "https://gaanabazaar.vercel.app/",
+      "domain": "gaanabazaar.vercel.app",
+      "category": "rozmarra",
+      "status": "live",
+      "featured": false,
+      "pinned": false,
+      "views": null,
+      "image": "/images/entries/gaanabazaar.jpg"
+    },
+    {
       "id": 71,
       "slug": "marathi-songs",
       "title": "मराठी गाणी",
